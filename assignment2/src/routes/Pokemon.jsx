@@ -10,6 +10,9 @@ export async function action() {
     return { contact };
   }
 export default function EditContact() {
+  React.useEffect(() => {
+    fetchPokemonData(startIndex);
+  }, []);
   const { pokemon } = useLoaderData();
   const [pokemonData, setPokemonData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,10 +24,10 @@ export default function EditContact() {
     color: "white",
     backgroundColor: "DodgerBlue",
     padding: "40px",
-    "margin-left": "80px",
+    "marginLeft": "80px",
     "margin-top": "30px",
     "font-weight": "bold",
-    "font-size": "30px",
+    "fontSize": "30px",
     fontFamily: "Sans-Serif",
     borderRadius: "20px"
   };
@@ -37,8 +40,8 @@ export default function EditContact() {
       <p>{error}</p>
     ) : (
       <div>
-         <button style={{ backgroundColor: "DodgerBlue","font-size": "30px",padding: "10px","margin-left": "20px", borderRadius: "30px"}} onClick={handlePrevClick}>{"<"}</button>
-         <button style={{backgroundColor: "DodgerBlue","font-size": "30px",padding: "10px","margin-left": "20px", borderRadius: "30px"}} onClick={handleNextClick}>{">"}</button>
+         <button style={{ backgroundColor: "DodgerBlue","fontSize": "30px",padding: "10px","marginLeft": "20px", borderRadius: "30px",color: "black"}} onClick={handlePrevClick}>{"<"}</button>
+         <button style={{backgroundColor: "DodgerBlue","fontSize": "30px",padding: "10px","marginLeft": "20px", borderRadius: "30px",color: "black"}} onClick={handleNextClick}>{">"}</button>
         <table style={{ display: "inline-block", textAlign: "center"}}>
           <tbody>
             {pokemonData.reduce((rows, key, index) => (index % 4 === 0 ? rows.push([key]) : rows[rows.length-1].push(key)) && rows, [])
